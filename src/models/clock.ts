@@ -1,19 +1,31 @@
 
+import { id } from '~/utils/string.ts'
+
+export interface ClockProps {
+	clock: IClock;
+}
+
 export interface IClock {
 	segments: number,
 	title: string,
 	filled?: number,
-	fillColour?: string,
+	colour?: string,
 }
 
-export class Clock implements IClock {
+export class ClockModel implements IClock {
 	title: string;
 	segments: number;
 	filled: number = 0;
-	fillColour: string = '#ddd';
+	colour: string = '#444';
 
 	constructor(segments: number, title: string) {
+		console.log(`Clock::constructor(${ segments }, "${ title }")`)
+
 		this.segments = segments
 		this.title = title
+	}
+
+	get id(): string {
+		return id(this.title)
 	}
 }

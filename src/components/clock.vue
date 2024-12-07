@@ -1,25 +1,27 @@
 <template>
-	<div class="root relative px-4 pt-4 pb-2">
-		<canvas ref="canvas" width="300" height="300" @click="drawSegment"></canvas>
+	<div class="clock relative px-4 pt-4 pb-2">
+		<canvas ref="canvas" width="300" height="300"></canvas>
+		<prime-button icon="pi pi-times" class="absolute top-1 left-auto right-1 z-50" @click="remove" />
 		<figure>
 			<img :src="imagePath" @click="drawSegment" />
-			<figcaption>{{ title }}</figcaption>
+			<figcaption>{{ clock.title }}</figcaption>
 		</figure>
 	</div>
 </template>
 <script setup lang="ts">
 
-import { IClock } from '~/models/clock.ts'
+import { ClockProps } from '~/models/clock.ts'
 
-const { segments, title, filled = 0, fillColour = '#444' } = defineProps<IClock>()
+const emit = defineEmits(['remove'])
+const { clock } = defineProps<ClockProps>()
 
 // computed
-const imagePath = computed(() => `/img/clock-${ segments }.png`)
+const imagePath = computed(() => `/img/clock-${ clock.segments }.png`)
 
 // drawing constants
 const CENTRE = { x: 150, y: 150 }
 const RADIUS = 142
-const WEDGE = (Math.PI * 2) / segments
+const WEDGE = (Math.PI * 2) / clock.segments
 
 const canvas: Ref<HTMLCanvasElement | undefined> = ref()
 const context: Ref<CanvasRenderingContext2D | undefined> = ref()
@@ -29,14 +31,14 @@ let currentSegments = 0
 onMounted(() => {
 	context.value = canvas.value?.getContext('2d') || undefined
 
-	if(filled > 0) {
+	if(clock.filled > 0) {
 		render()
-		currentSegments = filled
+		currentSegments = clock.filled
 	}
 })
 
 function drawSegment(evt) {
-	if(currentSegments >= segments) return
+	if(currentSegments >= clock.segments) return
 
 	render()
 
@@ -50,16 +52,22 @@ function render() {
 	context.value.moveTo(CENTRE.x, CENTRE.y)
 	context.value.arc(CENTRE.x, CENTRE.y, RADIUS, WEDGE * currentSegments, WEDGE * (currentSegments + 1))
 	context.value.closePath()
-	context.value.fillStyle = fillColour
+	context.value.fillStyle = clock.colour
 	context.value.fill()
+}
+
+function remove() {
+	emit('remove', clock)
 }
 
 </script>
 <style scoped>
 
-.root {
+.clock {
 	width: 332px;
-	@apply bg-white border border-gray-200 rounded-md;
+	background-color: var(--p-surface-0);
+	border: 1px solid var(--p-surface-300);
+	@apply rounded-md;
 }
 
 figure {

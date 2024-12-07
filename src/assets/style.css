@@ -5,6 +5,21 @@
 @tailwind components;
 @tailwind utilities;
 
+html, body {
+	font-size: 14px;
+	background-color: var(--p-surface-200);
+	color: var(--p-surface-900);
+	@apply w-full h-full;
+}
+
+main {
+	@apply p-4 md:mx-auto mb-8;
+}
+
 .label {
-	@apply font-sans font-semibold text-xs uppercase inline-block mb-2;
+	@apply font-sans font-semibold text-xs uppercase inline-block mt-4;
+}
+
+.p-button {
+	@apply uppercase;
 }

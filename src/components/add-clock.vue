@@ -1,23 +1,21 @@
 <template>
-	<prime-panel header="Add Clock">
-		<div class="flex gap-2">
+	<div>
+		<div class="flex gap-2 mb-2">
 			<label class="label">Segments</label>
-			<prime-select v-model="selected" :options="options" optionLabel="name" placeholder="Select" />
+			<prime-select v-model="selected" :options="options" optionLabel="name" placeholder="Select" class="flex-grow" />
 		</div>
-		<div class="flex gap-2">
+		<div class="flex gap-2 mb-2">
 			<label class="label">Name</label>
-			<prime-input-text v-model="text" />
+			<prime-input-text v-model="text" class="flex-grow" />
 		</div>
-		<prime-button icon="pi pi-plus" label="Add" @click="save" />
-	</prime-panel>
+		<prime-button icon="pi pi-plus" label="Save" @click="save" class="w-full" />
+	</div>
 </template>
 <script setup lang="ts">
 
-import { IClock, Clock } from '~/models/clock.ts'
+import { ClockModel } from '~/models/clock.ts'
 
-const emit = defineEmits<{
-	(e: 'add', IClock),
-}>()
+const emit = defineEmits(['add'])
 const text = ref()
 const selected = ref()
 const options = ref([
@@ -27,7 +25,7 @@ const options = ref([
 ])
 
 function save() {
-	emit('add', new Clock(selected.value.code, text.value))
+	emit('add', new ClockModel(selected.value.code, text.value))
 }
 
 </script>
