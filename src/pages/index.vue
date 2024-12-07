@@ -1,14 +1,30 @@
 <template>
 	<div class="px-4">
-		<clock :segments="4" title="4 Clock" :filled="1" />
-		<clock :segments="6" title="6 Clock" fill-colour="blue" />
-		<clock :segments="8" title="8 Clock" fill-colour="green" />
+		<add-clock @add="add" />
+
+		<clock v-for="clock in clocks"
+			:key="clock.title"
+			:title="clock.title"
+			:segments="clock.segments"
+			:filled="clock.filled"
+			:fillColour="clock.fillColour"
+		/>
 	</div>
 </template>
 <script setup lang="ts">
 
+import { IClock } from '~/models/clock.ts'
+
 useSeoMeta({
 	title: 'Home',
 })
+
+const clocks: IClock[] = ref([])
+
+function add(input) {
+	console.log(input)
+
+	clocks.value.push(input)
+}
 
 </script>

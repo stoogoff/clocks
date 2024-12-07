@@ -1,5 +1,5 @@
 <template>
-	<div id="container" class="relative">
+	<div class="root relative px-4 pt-4 pb-2">
 		<canvas ref="canvas" width="300" height="300" @click="drawSegment"></canvas>
 		<figure>
 			<img :src="imagePath" @click="drawSegment" />
@@ -9,15 +9,9 @@
 </template>
 <script setup lang="ts">
 
-// props
-interface Props {
-	segments: number,
-	title: string,
-	filled?: number,
-	fillColour?: string,
-}
+import { IClock } from '~/models/clock.ts'
 
-const { segments, title, filled = 0, fillColour = '#444' } = defineProps<Props>()
+const { segments, title, filled = 0, fillColour = '#444' } = defineProps<IClock>()
 
 // computed
 const imagePath = computed(() => `/img/clock-${ segments }.png`)
@@ -42,6 +36,8 @@ onMounted(() => {
 })
 
 function drawSegment(evt) {
+	if(currentSegments >= segments) return
+
 	render()
 
 	currentSegments++
@@ -61,18 +57,23 @@ function render() {
 </script>
 <style scoped>
 
-#container, figure {
-	min-height: 340px;
+.root {
+	width: 332px;
+	@apply bg-white border border-gray-200 rounded-md;
+}
+
+figure {
+	min-height: 328px;
 	width: 300px;
 }
 
 figcaption {
-	@apply uppercase font-bold block text-center absolute left-0 right-0;
-	top: 300px;
+	@apply uppercase font-bold block text-center absolute left-4 right-4;
+	top: 320px;
 }
 
 canvas, img {
-	@apply absolute top-0 left-0;
+	@apply absolute top-4 left-4;
 	width: 300px;
 	height: 300px;
 }
