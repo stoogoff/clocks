@@ -26,31 +26,30 @@ const WEDGE = (Math.PI * 2) / clock.segments
 const canvas: Ref<HTMLCanvasElement | undefined> = ref()
 const context: Ref<CanvasRenderingContext2D | undefined> = ref()
 
-let currentSegments = 0
-
 onMounted(() => {
 	context.value = canvas.value?.getContext('2d') || undefined
 
 	if(clock.filled > 0) {
-		render()
-		currentSegments = clock.filled
+		for(let i = 0; i < clock.filled; ++i) {
+			render(i)
+		}
 	}
 })
 
 function drawSegment(evt) {
-	if(currentSegments >= clock.segments) return
+	if(clock.filled >= clock.segments) return
 
-	render()
+	render(clock.filled)
 
-	currentSegments++
+	clock.filled++
 }
 
-function render() {
+function render(pos) {
 	if(!context.value) return
 
 	context.value.beginPath()
 	context.value.moveTo(CENTRE.x, CENTRE.y)
-	context.value.arc(CENTRE.x, CENTRE.y, RADIUS, WEDGE * currentSegments, WEDGE * (currentSegments + 1))
+	context.value.arc(CENTRE.x, CENTRE.y, RADIUS, WEDGE * pos, WEDGE * (pos + 1))
 	context.value.closePath()
 	context.value.fillStyle = clock.colour
 	context.value.fill()
