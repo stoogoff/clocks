@@ -1,7 +1,7 @@
 <template>
 	<div class="clock relative px-4 pt-4 pb-2">
 		<canvas ref="canvas" width="300" height="300"></canvas>
-		<prime-button icon="pi pi-times" class="absolute top-1 left-auto right-1 z-50" @click="remove" />
+		<prime-button severity="danger" icon="pi pi-times" class="!absolute top-2 right-2 z-50" @click="remove" />
 		<figure>
 			<img :src="imagePath" @click="drawSegment" />
 			<figcaption>{{ clock.title }}</figcaption>
