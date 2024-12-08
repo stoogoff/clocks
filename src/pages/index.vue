@@ -1,7 +1,7 @@
 <template>
 	<main>
 		<div class="flex flex-col md:flex-row gap-4">
-			<clock v-for="clock in clocks"
+			<clock v-for="clock in state.clocks"
 				:key="clock.id"
 				:clock="clock"
 				@remove="remove"
@@ -18,23 +18,26 @@
 <script setup lang="ts">
 
 import { ClockModel } from '~/models/clock.ts'
+import { useClockStore } from '~/stores/clocks.ts'
 
 useSeoMeta({
 	title: 'Home',
 })
 
+// popover state
 const op = ref()
 const toggle = event => op.value.toggle(event)
 
-const clocks = ref<ClockModel>([])
+// clock functions
+const state = useClockStore()
 
 const add = (input: ClockModel) => {
-	clocks.value.push(input)
+	state.add(input)
 	toggle()
 }
 
 const remove = (input: ClockModel) => {
-	clocks.value = clocks.value.filter((clock: Clock) => clock.id !== input.id)
+	state.remove(input)
 }
 
 </script>

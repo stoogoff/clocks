@@ -5,3 +5,10 @@
 		</prime-panel>
 	</main>
 </template>
+<script setup lang="ts">
+
+useSeoMeta({
+	title: 'About',
+})
+
+</script>
