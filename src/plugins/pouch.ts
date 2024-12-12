@@ -1,6 +1,5 @@
 
 import PouchDB from 'pouchdb'
-//import { PiniaPluginContext } from 'pinia'
 import { ClockModel, IClock } from '~/models/clock.ts'
 import { useClockStore } from '~/stores/clocks.ts'
 
@@ -14,26 +13,4 @@ export default defineNuxtPlugin(async ({ $pinia }) => {
 	})
 
 	store.initialise(response.rows.map((row: IClock) => ClockModel.fromJson(row.doc)))
-
-	$pinia.use(({ store }) => {
-		console.log('subscribe')
-
-		store.$subscribe(async (mutation, state) => {
-			console.log(mutation)
-			console.log('type=', mutation.type)
-			console.log('storeId=', mutation.storeId)
-			console.log('payload=', mutation.payload)
-
-			if(mutation.storeId !== 'clocks') return
-
-			//console.log(state.clocks)
-
-			for(const clock of state.clocks) {
-				console.log(clock.toJson())
-				await database.put(clock.toJson())
-			}
-
-			// this will not handle delete
-		})
-	})
 })
