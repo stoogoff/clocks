@@ -1,6 +1,14 @@
 
 import { id } from '~/utils/string.ts'
 
+interface IClockJson {
+	_id: string,
+	title: string,
+	segments: number,
+	filled: number,
+	colour: string,
+}
+
 export interface IClock {
 	segments: number,
 	title: string,
@@ -33,17 +41,17 @@ export class ClockModel implements IClock {
 		return `clock:${ id(this.title) }:segment-${ this.segments }`
 	}
 
-	toJson() {
+	toJson(): IClockJson {
 		return {
 			_id: this.id,
 			title: this.title,
 			segments: this.segments,
 			filled: this.filled,
-			colour: this.colour,			
+			colour: this.colour,
 		}
 	}
 
-	static fromJson(data): ClockModel {
+	static fromJson(data: IClockJson): ClockModel {
 		const clock = new ClockModel(data.segments, data.title)
 
 		if(data.filled) clock.filled = data.filled

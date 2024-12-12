@@ -1,10 +1,10 @@
 
 import { defineStore } from 'pinia'
-//import { usePouch } from '~/composables/use-pouch.ts'
+import { usePouch } from '~/composables/use-pouch.ts'
 import { ClockState, ClockModel } from '~/models/clock.ts'
 
 export const useClockStore = defineStore('clocks', {
-	state: async () => {
+	state: () => {
 		return {
 			clocks: [],
 		}
@@ -12,17 +12,25 @@ export const useClockStore = defineStore('clocks', {
 
 	actions: {
 		async add(clock: ClockModel) {
-			/*const database = usePouch()
+			const database = usePouch()
 
-			database.put(clock.toJson())*/
+			database.put(clock.toJson())
 			this.clocks.push(clock)
 		},
 
-		remove(input: ClockModel) {
-			/*const database = usePouch()
+		async remove(input: ClockModel) {
+			const database = usePouch()
+			const clock = await database.get(input.id)
 
-			database.remove(input.toJson())*/
+			database.remove(clock)
 			this.clocks = this.clocks.filter((clock: ClockModel) => clock.id !== input.id)
+		},
+
+		async update(input: ClockModel) {
+			const database = usePouch()
+			const clock = await database.get(input.id)
+
+			await database.put({ ...clock, ...input.toJson() })
 		},
 
 		initialise(data: ClockModel[]) {

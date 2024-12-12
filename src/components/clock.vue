@@ -12,7 +12,7 @@
 
 import { ClockProps } from '~/models/clock.ts'
 
-const emit = defineEmits(['remove'])
+const emit = defineEmits(['remove', 'update'])
 const { clock } = defineProps<ClockProps>()
 
 // computed
@@ -42,6 +42,7 @@ function drawSegment(evt) {
 	render(clock.filled)
 
 	clock.filled++
+	emit('update', clock)
 }
 
 function render(pos) {

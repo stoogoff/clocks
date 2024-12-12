@@ -1,11 +1,14 @@
 <template>
 	<main>
 		<div class="flex flex-col md:flex-row gap-4">
-			<clock v-for="clock in state.clocks"
-				:key="clock.id"
-				:clock="clock"
-				@remove="remove"
-			/>
+			<client-only>
+				<clock v-for="clock in state.clocks"
+					:key="clock.id"
+					:clock="clock"
+					@remove="remove"
+					@update="update"
+				/>
+			</client-only>
 		</div>
 	</main>
 	<footer class="fixed bottom-0 left-0 right-0 bg-primary flex justify-center p-2">
@@ -38,6 +41,10 @@ const add = (input: ClockModel) => {
 
 const remove = (input: ClockModel) => {
 	state.remove(input)
+}
+
+const update = (input: ClockModel) => {
+	state.update(input)
 }
 
 </script>
