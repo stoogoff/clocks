@@ -16,7 +16,7 @@
 				</template>
 			</prime-select-button>
 		</div>
-		<prime-button icon="pi pi-plus" label="Save" @click="save" class="w-full" />
+		<prime-button icon="pi pi-plus" label="Save" @click="save" class="w-full" :disabled="disabled" />
 	</div>
 </template>
 <script setup lang="ts">
@@ -24,7 +24,11 @@
 import { ClockModel } from '~/models/clock.ts'
 
 const emit = defineEmits(['add'])
-const text = ref()
+
+const disabled = computed(() => selectedSegment.value === null || text.value === null)
+
+// input values / models
+const text = ref(null)
 const selectedSegment = ref(null)
 const segments = ref([
 	{ name: '4', code: 4 },
@@ -42,6 +46,8 @@ const colours = ref([
 ])
 
 function save() {
+	if(selectedSegment.value === null || text.value === null) return
+
 	const clock = new ClockModel(selectedSegment.value.code, text.value)
 
 	if(selectedColour.value) {
