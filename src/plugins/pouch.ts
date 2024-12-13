@@ -1,5 +1,6 @@
 
 import PouchDB from 'pouchdb'
+import { getAllClocks } from '~/storage/clock-storage.ts'
 import { ClockModel, IClock } from '~/models/clock.ts'
 import { useClockStore } from '~/stores/clocks.ts'
 
@@ -8,9 +9,7 @@ export default defineNuxtPlugin(async ({ $pinia }) => {
 
 	const database = usePouch()
 	const store = useClockStore()
-	const response = await database.allDocs({
-		include_docs: true,
-	})
+	const clocks = await getAllClocks()
 
-	store.initialise(response.rows.map((row: IClock) => ClockModel.fromJson(row.doc)))
+	store.initialise(clocks)
 })

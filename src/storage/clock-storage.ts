@@ -1,6 +1,6 @@
 
 import { usePouch } from '~/composables/use-pouch.ts'
-import { ClockModel } from '~/models/clock.ts'
+import { IClock, ClockModel } from '~/models/clock.ts'
 
 export const storeNewClock = (clock: ClockModel) => {
 	const database = usePouch()
@@ -20,4 +20,13 @@ export const updateClock = async (clock: ClockModel) => {
 	const existing = await database.get(clock.id)
 
 	await database.put({ ...existing, ...clock.toJson() })
+}
+
+export const getAllClocks = async (): Promise<ClockModel[]> => {
+	const database = usePouch()
+	const response = await database.allDocs({
+		include_docs: true,
+	})
+
+	return response.rows.map((row: IClock) => ClockModel.fromJson(row.doc))
 }
