@@ -14,6 +14,7 @@ declare module 'vue' {
     PrimePanel: typeof import('primevue/panel')['default']
     PrimePopover: typeof import('primevue/popover')['default']
     PrimeSelect: typeof import('primevue/select')['default']
+    PrimeSelectButton: typeof import('primevue/selectbutton')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
