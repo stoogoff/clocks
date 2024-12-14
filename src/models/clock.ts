@@ -16,10 +16,6 @@ export interface IClock {
 	colour?: string,
 }
 
-export interface ClockProps {
-	clock: IClock;
-}
-
 export interface ClockState {
 	clocks: ClockModel[]
 }

@@ -1,6 +1,7 @@
 <template>
 	<main>
-		<div class="flex flex-col md:flex-row gap-4">
+		<div class="flex flex-wrap flex-col md:flex-row gap-4">
+			<p v-if="noClocks">Use the add button below to create a new clock.</p>
 			<client-only>
 				<clock v-for="clock in state.clocks"
 					:key="clock.id"
@@ -30,6 +31,8 @@ useSeoMeta({
 // popover state
 const op = ref()
 const toggle = event => op.value.toggle(event)
+
+const noClocks = computed(() => state.clocks.length === 0)
 
 // clock functions
 const state = useClockStore()

@@ -1,8 +1,18 @@
 <template>
 	<div class="clock relative px-4 pt-4 pb-2">
 		<canvas ref="canvas" width="300" height="300"></canvas>
-		<prime-button severity="danger" icon="pi pi-times" class="!absolute top-2 right-2 z-50" @click="remove" />
-		<prime-button outlined icon="pi pi-eraser" class="!absolute bottom-2 right-2 z-50" @click="erase" />
+		<prime-button
+			v-if="!readonly"
+			severity="danger"
+			icon="pi pi-times"
+			class="!absolute top-2 right-2 z-50"
+			@click="remove" />
+		<prime-button
+			v-if="!readonly"
+			outlined
+			icon="pi pi-eraser"
+			class="!absolute bottom-2 right-2 z-50"
+			@click="erase" />
 		<figure>
 			<img :src="imagePath" @click="draw" />
 			<figcaption>{{ clock.title }}</figcaption>
@@ -11,10 +21,10 @@
 </template>
 <script setup lang="ts">
 
-import { ClockProps } from '~/models/clock.ts'
+import { IClock } from '~/models/clock.ts'
 
 const emit = defineEmits(['remove', 'update'])
-const { clock } = defineProps<ClockProps>()
+const { clock, readonly } = defineProps<{ clock: IClock, readonly?: boolean }>()
 
 // computed
 const imagePath = computed(() => `/img/clock-${ clock.segments }.png`)
@@ -34,6 +44,7 @@ onMounted(() => {
 })
 
 function draw(evt) {
+	if(readonly) return
 	if(clock.filled >= clock.segments) return
 
 	render(clock.filled)
@@ -66,11 +77,14 @@ function clear() {
 }
 
 function remove() {
+	if(readonly) return
+
 	emit('remove', clock)
 }
 
 function erase() {
-	if(clock.filled === 0) return
+	if(readonly) return
+	if(clock.filled <= 0) return
 
 	clock.filled--
 
