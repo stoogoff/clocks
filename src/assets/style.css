@@ -16,8 +16,21 @@ main {
 	@apply p-4 md:mx-auto mb-8;
 }
 
+h1 {
+	@apply text-2xl mb-2;
+}
+h2 {
+	@apply text-xl mb-2;
+}
+p {
+	@apply mb-4;
+}
+
 .label {
 	@apply font-sans font-semibold text-xs uppercase inline-block mt-4;
+}
+.link {
+	@apply text-blue-700 underline hover:text-blue-400 hover:no-underline;
 }
 
 .p-button {

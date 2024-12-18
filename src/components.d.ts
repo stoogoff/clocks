@@ -9,12 +9,15 @@ declare module 'vue' {
   export interface GlobalComponents {
     PrimeButton: typeof import('primevue/button')['default']
     PrimeCard: typeof import('primevue/card')['default']
+    PrimeChip: typeof import('primevue/chip')['default']
+    PrimeImage: typeof import('primevue/image')['default']
     PrimeInputText: typeof import('primevue/inputtext')['default']
     PrimeMenubar: typeof import('primevue/menubar')['default']
     PrimePanel: typeof import('primevue/panel')['default']
     PrimePopover: typeof import('primevue/popover')['default']
     PrimeSelect: typeof import('primevue/select')['default']
     PrimeSelectButton: typeof import('primevue/selectbutton')['default']
+    PrimeTag: typeof import('primevue/tag')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

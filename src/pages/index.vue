@@ -1,7 +1,10 @@
 <template>
 	<main>
 		<div class="flex flex-wrap flex-col md:flex-row gap-4">
-			<p v-if="noClocks">Use the add button below to create a new clock.</p>
+			<prime-panel v-if="noClocks" class="max-w-screen-md md:mx-auto">
+				<h1>How to use</h1>
+				<instruction />
+			</prime-panel>
 			<client-only>
 				<clock v-for="clock in state.clocks"
 					:key="clock.id"
