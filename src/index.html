@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Clocks</title>
+<!-- link rel="assets/styles.css" -->
+</head>
+<body>
+
+<main>
+	<div class="flex flex-wrap flex-col md:flex-row gap-4">
+		<div v-if="noClocks" class="max-w-screen-md md:mx-auto">
+			<h1>How to use</h1>
+				<p>Use the ADD button at the bottom of the main page to create a clock. You can choose the number of segments, give it a name, and choose a colour. Once the clock is created, clicking anywhere on the clock will fill in a segment of the chosen colour. There’s a close button <prime-tag severity="danger" icon="pi pi-times" /> which deletes the clock, and an eraser button <prime-tag icon="pi pi-eraser" /> which clears a filled segment.</p>
+		</div>
+		<div data-each="clocks">
+			<div class="clock relative px-4 pt-4 pb-2" data-component="clock">
+				<canvas width="300" height="300"></canvas>
+				<button
+					severity="danger"
+					icon="pi pi-times"
+					class="!absolute top-2 right-2 z-50"
+					data-click="remove">Remove</button>
+				<button
+					outlined
+					icon="pi pi-eraser"
+					class="!absolute bottom-2 right-2 z-50"
+					data-click="erase">Erase</button>
+				<figure>
+					<img data-src="imagePath" data-click="draw" />
+					<figcaption data-value="title"></figcaption>
+				</figure>
+			</div>
+		</div>
+
+
+	</div>
+</main>
+<footer class="fixed bottom-0 left-0 right-0 bg-primary flex justify-center p-2">
+	<prime-button icon="pi pi-clock" label="Add" @click="toggle" />
+	<prime-popover ref="op">
+		<add-clock @add="add" />
+	</prime-popover>
+</footer>
+
+<script type="module" src="main.js"></script>
+
+</body>
+</html>
