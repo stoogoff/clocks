@@ -1,10 +1,16 @@
 module.exports = {
 	content: [
 		'./index.html',
-		'./**/*.js',
+		'./main.js',
+		'./modules/**/*.js',
 	],
 	theme: {
 		extend: {},
 	},
-	plugins: [],
+	plugins: [
+		require('daisyui'),
+	],
+	daisyui: {
+		themes: ['light'],
+	},
 }

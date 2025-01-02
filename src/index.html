@@ -2,44 +2,77 @@
 <html>
 <head>
 <title>Clocks</title>
-<!-- link rel="assets/styles.css" -->
+<link rel="stylesheet" type="text/css" href="/assets/styles.css" />
 </head>
 <body>
 
+<div class="navbar bg-base-100 shadow-lg px-4 py-2">
+	<div class="flex-1 uppercase text-lg font-bold">
+		Clocks
+	</div>
+	<div class="flex-none">
+		<ul class="menu menu-horizontal px-1">
+			<li><a class="btn btn-ghost" href="/">Home</a></li>
+			<li><a class="btn btn-ghost" href="/about">About</a></li>
+		</ul>
+	</div>
+</div>
+
 <main>
 	<div class="flex flex-wrap flex-col md:flex-row gap-4">
-		<div v-if="noClocks" class="max-w-screen-md md:mx-auto">
+		<div data-if="noClocks" class="max-w-screen-md md:mx-auto">
 			<h1>How to use</h1>
 				<p>Use the ADD button at the bottom of the main page to create a clock. You can choose the number of segments, give it a name, and choose a colour. Once the clock is created, clicking anywhere on the clock will fill in a segment of the chosen colour. There’s a close button <prime-tag severity="danger" icon="pi pi-times" /> which deletes the clock, and an eraser button <prime-tag icon="pi pi-eraser" /> which clears a filled segment.</p>
 		</div>
 		<div data-each="clocks">
-			<div class="clock relative px-4 pt-4 pb-2" data-component="clock">
-				<canvas width="300" height="300"></canvas>
+			<div class="clock card relative px-4 pt-4 pb-2 bg-base-100 rounded-md shadow-lg" data-component="clock">
+				<canvas width="300" height="300" class="absolute top-4 left-4"></canvas>
 				<button
 					severity="danger"
 					icon="pi pi-times"
-					class="!absolute top-2 right-2 z-50"
+					class="!absolute top-2 right-2 z-50 btn btn-outline btn-error"
 					data-click="remove">Remove</button>
 				<button
 					outlined
 					icon="pi pi-eraser"
-					class="!absolute bottom-2 right-2 z-50"
+					class="!absolute bottom-2 right-2 z-50 btn btn-outline"
 					data-click="erase">Erase</button>
 				<figure>
-					<img data-src="imagePath" data-click="draw" />
-					<figcaption data-value="title"></figcaption>
+					<img data-src="imagePath" data-click="draw" class="absolute top-4 left-4" />
+					<figcaption class="uppercase font-bold block text-center absolute left-4 right-4" data-value="title"></figcaption>
 				</figure>
 			</div>
 		</div>
-
-
 	</div>
 </main>
-<footer class="fixed bottom-0 left-0 right-0 bg-primary flex justify-center p-2">
-	<prime-button icon="pi pi-clock" label="Add" @click="toggle" />
-	<prime-popover ref="op">
-		<add-clock @add="add" />
-	</prime-popover>
+<footer class="fixed bottom-0 left-0 right-0 flex justify-center p-2">
+	<details class="dropdown dropdown-top">
+		<summary class="btn btn-primary" icon="pi pi-clock" @click="toggle">Add</summary>
+		<div class="menu dropdown-content bg-base-100 rounded-box z-[1] p-2 shadow">
+			<label class="label">
+				Segments
+				<select :options="segments" placeholder="Select" class="select select-bordered flex-grow">
+					<option>4</option>
+					<option>6</option>
+					<option>8</option>
+				</select>
+			</label>
+			<label class="label">
+				Name
+				<input type="text" class="input input-bordered" v-model="text" />
+			</label>
+			<label class="label">
+				Colour
+
+				<!-- prime-select-button v-model="selectedColour" :options="colours" dataKey="colour">
+					<template #option="slotProps">
+						<div class="rounded-sm w-6 h-6" :style="`background-color: ${ slotProps.option.colour }`" />
+					</template>
+				</prime-select-button -->
+			</label>
+			<button icon="pi pi-plus" label="Save" @click="save" class="btn btn-primary w-full" :disabled="disabled">Save</button>
+		</div>
+	</details>
 </footer>
 
 <script type="module" src="main.js"></script>

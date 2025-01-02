@@ -1,0 +1,53 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+	font-size: 14px;
+	@apply w-full h-full bg-base-300 text-base-content;
+}
+
+main {
+	@apply p-4 md:mx-auto mb-8;
+}
+
+h1 {
+	@apply text-2xl mb-2;
+}
+h2 {
+	@apply text-xl mb-2;
+}
+p {
+	@apply mb-4;
+}
+
+.label {
+	@apply font-sans font-semibold text-xs uppercase inline-block mt-2 flex items-center gap-2;
+}
+.link {
+	@apply text-blue-700 underline hover:text-blue-400 hover:no-underline;
+}
+
+.btn {
+	@apply uppercase;
+}
+
+/* clock */
+.clock {
+	width: 332px;
+}
+
+.clock figure {
+	min-height: 328px;
+	width: 300px;
+}
+
+.clock figcaption {
+	top: 320px;
+}
+
+.clock canvas, .clock img {
+	width: 300px;
+	height: 300px;
+}

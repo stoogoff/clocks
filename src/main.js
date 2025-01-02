@@ -1,7 +1,8 @@
 
-import '/assets/style.css';
+//import '/assets/styles.css';
 
 import { directives } from 'exp'
+import { isEmptyArray } from 'exp/utils/assert.js'
 import Clock from '/modules/clock/component.js'
 
 directives.registerComponent('clock', Clock)
@@ -12,7 +13,7 @@ directives.load(document.body, {
 				segments: 4,
 				title: '4 Clock',
 				filled: 0,
-				colour: '#444',
+				colour: '#f00',
 			},
 			{
 				segments: 8,
@@ -21,5 +22,11 @@ directives.load(document.body, {
 				colour: '#444',
 			},
 		],
-	}
+	},
+
+	computed: {
+		noClocks() {
+			return isEmptyArray(this.data.clocks)
+		}
+	},
 })
