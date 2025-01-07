@@ -1,9 +1,10 @@
 
 import { id } from 'exp/utils/string.js'
+import { logger } from './logger.js'
 
 export class ClockModel {
 	constructor(segments, title) {
-		console.log(`Clock::constructor(${ segments }, "${ title }")`)
+		logger().log(`ClockModel:constructor(${ segments }, "${ title }")`)
 
 		this.segments = segments
 		this.title = title
@@ -13,10 +14,6 @@ export class ClockModel {
 
 	get id() {
 		return `clock:${ id(this.title) }:segment-${ this.segments }`
-	}
-
-	get imagePath() {
-		return `/assets/img/clock-${ this.segments }.png`
 	}
 
 	toJson() {
