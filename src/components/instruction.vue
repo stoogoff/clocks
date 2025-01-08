@@ -1,3 +1,0 @@
-<template>
-	<p>Use the ADD button at the bottom of the main page to create a clock. You can choose the number of segments, give it a name, and choose a colour. Once the clock is created, clicking anywhere on the clock will fill in a segment of the chosen colour. There’s a close button <prime-tag severity="danger" icon="pi pi-times" /> which deletes the clock, and an eraser button <prime-tag icon="pi pi-eraser" /> which clears a filled segment.</p>
-</template>
