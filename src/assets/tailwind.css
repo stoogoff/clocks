@@ -23,7 +23,7 @@ p {
 }
 
 .label {
-	@apply font-sans font-semibold text-xs uppercase inline-block mt-2 flex items-center gap-2;
+	@apply font-sans font-semibold text-xs uppercase mt-2 flex items-center gap-2;
 }
 .link {
 	@apply text-blue-700 underline hover:text-blue-400 hover:no-underline;

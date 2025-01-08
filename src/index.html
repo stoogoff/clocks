@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Clocks</title>
 <link rel="stylesheet" type="text/css" href="/assets/styles.css" />
 </head>
@@ -18,40 +20,43 @@
 	</div>
 </div>
 
-<main>
-	<div class="flex flex-wrap flex-col md:flex-row gap-4">
-		<div data-if="noClocks" class="max-w-screen-md md:mx-auto">
+<main data-component="clock-manager">
+	<div>
+		<section data-if="!hasClocks" class="max-w-screen-md md:mx-auto">
 			<h1>How to use</h1>
 				<p>Use the ADD button at the bottom of the main page to create a clock. You can choose the number of segments, give it a name, and choose a colour. Once the clock is created, clicking anywhere on the clock will fill in a segment of the chosen colour. There’s a close button <prime-tag severity="danger" icon="pi pi-times" /> which deletes the clock, and an eraser button <prime-tag icon="pi pi-eraser" /> which clears a filled segment.</p>
-		</div>
-		<div data-each="clocks">
-			<div class="clock card relative px-4 pt-4 pb-2 bg-base-100 rounded-md shadow-lg" data-component="clock">
-				<canvas width="300" height="300" class="absolute top-4 left-4"></canvas>
-				<button
-					severity="danger"
-					icon="pi pi-times"
-					class="!absolute top-2 right-2 z-50 btn btn-outline btn-error"
-					data-click="remove">Remove</button>
-				<button
-					outlined
-					icon="pi pi-eraser"
-					class="!absolute bottom-2 right-2 z-50 btn btn-outline"
-					data-click="erase">Erase</button>
-				<figure>
-					<img data-src="imagePath" data-click="draw" class="absolute top-4 left-4" />
-					<figcaption class="uppercase font-bold block text-center absolute left-4 right-4" data-value="title"></figcaption>
-				</figure>
+		</section>
+		<section class="flex flex-wrap flex-col md:flex-row gap-4">
+			<!-- this section is to prevent the if block being removed -->
+			<div data-each="clocks">
+				<div class="clock card relative px-4 pt-4 pb-2 bg-base-100 rounded-md shadow-lg" data-component="clock">
+					<canvas width="300" height="300" class="absolute top-4 left-4"></canvas>
+					<button
+						severity="danger"
+						icon="pi pi-times"
+						class="!absolute top-2 right-2 z-50 btn btn-outline btn-error"
+						data-click="remove">Remove</button>
+					<button
+						outlined
+						icon="pi pi-eraser"
+						class="!absolute bottom-2 right-2 z-50 btn btn-outline"
+						data-click="erase">Erase</button>
+					<figure>
+						<img data-src="imagePath" data-click="draw" class="absolute top-4 left-4" />
+						<figcaption class="uppercase font-bold block text-center absolute left-4 right-4" data-value="title"></figcaption>
+					</figure>
+				</div>
 			</div>
-		</div>
+		</section>
 	</div>
 </main>
-<footer class="fixed bottom-0 left-0 right-0 flex justify-center p-2">
+<footer class="fixed bottom-0 left-0 right-0 flex justify-center p-2" data-component="clock-add">
 	<details class="dropdown dropdown-top">
-		<summary class="btn btn-primary" icon="pi pi-clock" @click="toggle">Add</summary>
+		<summary class="btn btn-primary" icon="pi pi-clock">Add</summary>
 		<div class="menu dropdown-content bg-base-100 rounded-box z-[1] p-2 shadow">
 			<label class="label">
 				Segments
-				<select :options="segments" placeholder="Select" class="select select-bordered flex-grow">
+				<select placeholder="Select" class="select select-bordered flex-grow" data-input="segments">
 					<option>4</option>
 					<option>6</option>
 					<option>8</option>
@@ -59,18 +64,20 @@
 			</label>
 			<label class="label">
 				Name
-				<input type="text" class="input input-bordered" v-model="text" />
+				<input type="text" class="input input-bordered" data-input="title" />
 			</label>
 			<label class="label">
 				Colour
-
-				<!-- prime-select-button v-model="selectedColour" :options="colours" dataKey="colour">
-					<template #option="slotProps">
-						<div class="rounded-sm w-6 h-6" :style="`background-color: ${ slotProps.option.colour }`" />
-					</template>
-				</prime-select-button -->
+				<div class="flex gap-1 justify-center">
+					<div class="badge badge-lg" data-click="setColour" data-colour="#4B5563" style="background-color: #4B5563"></div>
+					<div class="badge badge-lg" data-click="setColour" data-colour="#DC2626" style="background-color: #DC2626"></div>
+					<div class="badge badge-lg" data-click="setColour" data-colour="#D97706" style="background-color: #D97706"></div>
+					<div class="badge badge-lg" data-click="setColour" data-colour="#059669" style="background-color: #059669"></div>
+					<div class="badge badge-lg" data-click="setColour" data-colour="#2563EB" style="background-color: #2563EB"></div>
+					<div class="badge badge-lg" data-click="setColour" data-colour="#7C3AED" style="background-color: #7C3AED"></div>
+				</div>
 			</label>
-			<button icon="pi pi-plus" label="Save" @click="save" class="btn btn-primary w-full" :disabled="disabled">Save</button>
+			<button icon="pi pi-plus" data-click="save" class="btn btn-primary w-full" data-disabled="disabled">Save</button>
 		</div>
 	</details>
 </footer>

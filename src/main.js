@@ -1,32 +1,17 @@
 
-//import '/assets/styles.css';
+import { DIRECTIVES_LOG_KEY } from 'exp/reactive/config.js'
+import { setLogger, ConsoleLogger, LOG_LEVEL_LOG, LOG_LEVEL_INFO } from 'exp/utils/logger.js'
 
 import { directives } from 'exp'
-import { isEmptyArray } from 'exp/utils/assert.js'
-import Clock from '/modules/clock/component.js'
+import ClockAdd from '/modules/clock/add.js'
+import ClockManager from '/modules/clock/manager.js'
+import ClockView from '/modules/clock/view.js'
+import { CLOCK_LOG_KEY } from '/modules/clock/logger.js'
 
-directives.registerComponent('clock', Clock)
-directives.load(document.body, {
-	data: {
-		clocks: [
-			{
-				segments: 4,
-				title: '4 Clock',
-				filled: 0,
-				colour: '#f00',
-			},
-			{
-				segments: 8,
-				title: '8 Clock',
-				filled: 1,
-				colour: '#444',
-			},
-		],
-	},
+//setLogger(DIRECTIVES_LOG_KEY, ConsoleLogger, LOG_LEVEL_LOG)
+setLogger(CLOCK_LOG_KEY, ConsoleLogger, LOG_LEVEL_INFO)
 
-	computed: {
-		noClocks() {
-			return isEmptyArray(this.data.clocks)
-		}
-	},
-})
+directives.registerComponent('clock', ClockView)
+directives.registerComponent('clock-add', ClockAdd)
+directives.registerComponent('clock-manager', ClockManager)
+directives.load(document.body)
