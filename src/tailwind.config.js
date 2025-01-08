@@ -1,6 +1,6 @@
 module.exports = {
 	content: [
-		'./index.html',
+		'./*.html',
 		'./main.js',
 		'./modules/**/*.js',
 	],
@@ -11,6 +11,6 @@ module.exports = {
 		require('daisyui'),
 	],
 	daisyui: {
-		themes: ['light'],
+		themes: ['winter'],
 	},
 }

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Clocks</title>
+<link rel="stylesheet" type="text/css" href="/assets/styles.css" />
+</head>
+<body>
+
+<div class="navbar bg-base-100 shadow-lg px-4 py-2">
+	<div class="flex-1 uppercase text-lg font-bold">
+		Clocks
+	</div>
+	<div class="flex-none">
+		<ul class="menu menu-horizontal px-1">
+			<li><a class="btn btn-ghost" href="/">Home</a></li>
+			<li><a class="btn btn-ghost" href="/about.html">About</a></li>
+		</ul>
+	</div>
+</div>
+
+<main class="md:flex gap-4 max-w-screen-lg">
+	<section class="flex-grow p-4 rounded-md bg-base-100 shadow-lg">
+		<h1>About Clocks</h1>
+		<p>Clocks is designed for tabletop roleplaying games, such as Forged in the Dark and Powered by the Apocalypse games, where tracking progress using clocks is a key mechanic. Clocks can have 4, 6, or 8 segments, which can be filled in to show progress towards a goal.</p>
+
+		<p>Use the ADD button at the bottom of the main page to create a clock. You can choose the number of segments, give it a name, and choose a colour. Once the clock is created, clicking anywhere on the clock will fill in a segment of the chosen colour. There’s a close button <prime-tag severity="danger" icon="pi pi-times" /> which deletes the clock, and an eraser button <prime-tag icon="pi pi-eraser" /> which clears a filled segment.</p>
+
+		<h2>Storage</h2>
+		<p>All clock data is stored within your browser and will be available whenever you visit the site. The advantage of this is there’s no lag when loading your clocks as there’s no network call to retrieve the data. The disadvantage is there’s no way to share clocks with your players. This is a feature I want to add in the future.</p>
+
+		<p>Built by Stoo Goff | <a href="https://we-evolve.co.uk" class="link">we evolve</a></p>
+		<div class="flex justify-center">
+			<img src="/img/we-evolve.png" width="250" />
+		</div>
+	</section>
+	<div class="hidden md:block">
+		<div class="clock relative px-4 pt-4 pb-2 bg-base-100 rounded-md shadow-lg" data-component="clock">
+			<canvas width="300" height="300" class="absolute top-4 left-4"></canvas>
+			<small class="!absolute top-2 left-2 z-50"><span data-value="filled"></span> of <span data-value="segments"></span></small>
+			<figure>
+				<img data-src="imagePath" class="absolute top-4 left-4" />
+				<figcaption class="uppercase font-bold block text-center absolute left-4 right-4" data-value="title"></figcaption>
+			</figure>
+		</div>
+	</div>
+</main>
+
+<script type="module" src="main.js"></script>
+
+</body>
+</html>

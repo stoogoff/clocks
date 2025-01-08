@@ -11,10 +11,10 @@ const Wedge = segments => (Math.PI * 2) / segments
 
 export default {
 	data: {
-		segments: 4,
-		title: '',
-		filled: 0,
-		colour: '#444',
+		segments: 8,
+		title: 'Sample Clock',
+		filled: 3,
+		colour: '#D97706',
 	},
 
 	computed: {
