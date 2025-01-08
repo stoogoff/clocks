@@ -23,8 +23,10 @@
 <main data-component="clock-manager">
 	<div>
 		<section data-if="!hasClocks" class="max-w-screen-md md:mx-auto">
-			<h1>How to use</h1>
+			<div class="p-4 rounded-md bg-base-100 shadow-lg">
+				<h1>How to use</h1>
 				<p>Use the ADD button at the bottom of the main page to create a clock. You can choose the number of segments, give it a name, and choose a colour. Once the clock is created, clicking anywhere on the clock will fill in a segment of the chosen colour. There’s a close button <prime-tag severity="danger" icon="pi pi-times" /> which deletes the clock, and an eraser button <prime-tag icon="pi pi-eraser" /> which clears a filled segment.</p>
+			</div>
 		</section>
 		<section class="flex flex-wrap flex-col md:flex-row gap-4">
 			<!-- this section is to prevent the if block being removed -->

@@ -62,7 +62,6 @@ export default {
 	},
 
 	draw() {
-		//if(readonly) return
 		if(this.data.filled >= this.data.segments) return
 
 		this.render(this.data.filled)
@@ -73,13 +72,10 @@ export default {
 	},
 
 	remove() {
-		//if(readonly) return
-
 		clockStore.remove(this.data)
 	},
 
 	erase() {
-		//if(readonly) return
 		if(this.data.filled <= 0) return
 
 		this.data.filled--

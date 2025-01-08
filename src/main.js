@@ -6,11 +6,27 @@ import { directives } from 'exp'
 import ClockAdd from '/modules/clock/add.js'
 import ClockManager from '/modules/clock/manager.js'
 import ClockView from '/modules/clock/view.js'
+import { clockStore } from '/modules/clock/store.js'
 import { CLOCK_LOG_KEY } from '/modules/clock/logger.js'
+import { POUCH_LOG_KEY, getAllClocks, removeClock } from '/migrations/pouch.js'
 
 //setLogger(DIRECTIVES_LOG_KEY, ConsoleLogger, LOG_LEVEL_LOG)
 setLogger(CLOCK_LOG_KEY, ConsoleLogger, LOG_LEVEL_INFO)
+setLogger(POUCH_LOG_KEY, ConsoleLogger, LOG_LEVEL_INFO)
 
+async function migrateFromPouch() {
+	const all = await getAllClocks()
+
+	all.forEach(async clock => {
+		clockStore.add(clock)
+
+		await removeClock(clock)
+	})
+}
+
+migrateFromPouch()
+
+// register components and load
 directives.registerComponent('clock', ClockView)
 directives.registerComponent('clock-add', ClockAdd)
 directives.registerComponent('clock-manager', ClockManager)

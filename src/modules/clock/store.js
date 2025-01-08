@@ -4,7 +4,7 @@ import { local } from 'exp/utils/storage.js'
 import { ClockModel } from './model.js'
 import { logger } from './logger.js'
 
-const STORAGE_KEY = 'clocks'
+export const STORAGE_KEY = 'clocks'
 
 export const clockStore = new CollectionStore(local.get(STORAGE_KEY) ?? [], ClockModel.fromJson)
 
