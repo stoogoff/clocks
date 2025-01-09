@@ -6,9 +6,12 @@ WORKDIR /app
 COPY ./package.json .
 COPY ./yarn.lock .
 
+RUN apk add --no-cache git
 RUN yarn install
 
-COPY . .
+COPY ./tailwind.config.js . 
+COPY ./vite.config.js . 
+COPY ./src/ ./src/
 
 RUN yarn build
 
