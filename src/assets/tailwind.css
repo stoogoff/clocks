@@ -36,18 +36,44 @@ p {
 /* clock */
 .clock {
 	width: 332px;
-}
+	@apply relative px-4 pt-4 pb-2 bg-base-100 rounded-md shadow-lg;
 
-.clock figure {
-	min-height: 328px;
-	width: 300px;
+	canvas, figure img {
+		width: 300px;
+		height: 300px;
+	}
+
+	figure {
+		min-height: 328px;
+		width: 300px;
+	}
 }
 
 .clock figcaption {
 	top: 320px;
+	@apply uppercase font-bold block text-center absolute left-4 right-4;
 }
 
-.clock canvas, .clock img {
-	width: 300px;
-	height: 300px;
+.clock canvas {
+	@apply absolute top-4 left-4;
+}
+
+.clock small {
+	@apply !absolute top-2 left-2 z-50;
+}
+
+.clock svg {
+	@apply h-6 w-6;
+}
+
+.clock figure img {
+	@apply absolute top-4 left-4;
+}
+
+.clock button.remove {
+	@apply !absolute top-2 right-2 z-50;
+}
+
+.clock button.erase {
+	@apply !absolute bottom-2 right-2 z-50;
 }

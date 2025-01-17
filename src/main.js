@@ -26,6 +26,13 @@ async function migrateFromPouch() {
 
 migrateFromPouch()
 
+// register custom component
+directives.register('colour', (node, property, scope) => {
+	node.style.backgroundColor = scope.data[property]
+
+	return false
+})
+
 // register components and load
 directives.registerComponent('clock', ClockView)
 directives.registerComponent('clock-add', ClockAdd)

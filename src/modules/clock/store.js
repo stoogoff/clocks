@@ -9,8 +9,10 @@ export const STORAGE_KEY = 'clocks'
 export const clockStore = new CollectionStore(local.get(STORAGE_KEY) ?? [], ClockModel.fromJson)
 
 clockStore.on('change', data => {
-	logger().log('clockStore.on("change")', data)
-	logger().log('local.set', STORAGE_KEY, data.map(clock => clock.toJson()))
+	const clocks = data.map(clock => clock.toJson())
 
-	local.set(STORAGE_KEY, data.map(clock => clock.toJson()))
+	logger().log('clockStore.on("change")', data)
+	logger().log('local.set', STORAGE_KEY, clocks)
+
+	local.set(STORAGE_KEY, clocks)
 })

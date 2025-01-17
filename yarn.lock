@@ -642,7 +642,7 @@ events@^3.3.0:
 
 "exp@https://github.com/stoogoff/experimental#reactive":
   version "1.0.0"
-  resolved "https://github.com/stoogoff/experimental#3dad0463737f03dd5e4f2891d8c170ef266ed6e6"
+  resolved "https://github.com/stoogoff/experimental#a21d45b06b1c2f82d55cca8ffd50b99b2ca58a92"
 
 fast-glob@^3.3.2:
   version "3.3.3"
