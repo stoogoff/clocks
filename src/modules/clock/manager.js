@@ -1,5 +1,5 @@
 
-import { isEmptyArray } from 'exp/utils/assert.js'
+import { isEmptyArray } from 'quick/utils/assert.js'
 import { clockStore } from './store.js'
 import { logger } from './logger.js'
 

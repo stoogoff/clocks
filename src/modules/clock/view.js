@@ -1,5 +1,5 @@
 
-import { isNull, isEmptyArray } from 'exp/utils/assert.js'
+import { isNull, isEmptyArray } from 'quick/utils/assert.js'
 import { ClockModel } from './model.js'
 import { clockStore } from './store.js'
 import { logger } from './logger.js'

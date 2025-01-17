@@ -1,5 +1,5 @@
 
-import { isEmptyString, isNull } from 'exp/utils/assert.js'
+import { isEmptyString, isNull } from 'quick/utils/assert.js'
 import { clockStore } from './store.js'
 import { logger } from './logger.js'
 

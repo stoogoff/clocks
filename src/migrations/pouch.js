@@ -1,6 +1,6 @@
 
 import PouchDB from 'pouchdb'
-import { getLogger } from 'exp/utils/logger.js'
+import { getLogger } from 'quick/utils/logger.js'
 import { STORAGE_KEY } from '/modules/clock/store.js'
 
 export const POUCH_LOG_KEY = 'Pouch'

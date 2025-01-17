@@ -1,5 +1,5 @@
 
-import { id, createId } from 'exp/utils/string.js'
+import { id, createId } from 'quick/utils/string.js'
 import { logger } from './logger.js'
 
 export class ClockModel {

@@ -1,6 +1,6 @@
 
-import { CollectionStore } from 'exp/store/collection-store.js'
-import { local } from 'exp/utils/storage.js'
+import { CollectionStore } from 'quick/store/collection-store.js'
+import { local } from 'quick/utils/storage.js'
 import { ClockModel } from './model.js'
 import { logger } from './logger.js'
 

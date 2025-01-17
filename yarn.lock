@@ -640,10 +640,6 @@ events@^3.3.0:
   resolved "https://registry.yarnpkg.com/events/-/events-3.3.0.tgz#31a95ad0a924e2d2c419a813aeb2c4e878ea7400"
   integrity sha512-mQw+2fkQbALzQ7V0MY0IqdnXNOeTtP4r0lN9z7AAawCXgqea7bDii20AYrIBrFd/Hx0M2Ocz6S111CaFkUcb0Q==
 
-"exp@https://github.com/stoogoff/experimental#reactive":
-  version "1.0.0"
-  resolved "https://github.com/stoogoff/experimental#a21d45b06b1c2f82d55cca8ffd50b99b2ca58a92"
-
 fast-glob@^3.3.2:
   version "3.3.3"
   resolved "https://registry.yarnpkg.com/fast-glob/-/fast-glob-3.3.3.tgz#d06d585ce8dba90a16b0505c543c3ccfb3aeb818"
@@ -1176,6 +1172,10 @@ queue-microtask@^1.2.2, queue-microtask@^1.2.3:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/queue-microtask/-/queue-microtask-1.2.3.tgz#4929228bbc724dfac43e0efb058caf7b6cfb6243"
   integrity sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
+
+"quick@https://github.com/stoogoff/experimental#v1.0.0":
+  version "1.0.0"
+  resolved "https://github.com/stoogoff/experimental#be51c11fe1ba98b35520ab1427bfa7c151924c9b"
 
 read-cache@^1.0.0:
   version "1.0.0"
