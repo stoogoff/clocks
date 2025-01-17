@@ -29,26 +29,13 @@
 			</div>
 		</section>
 		<section class="flex flex-wrap flex-col md:flex-row gap-4">
-			<!-- this section is to prevent the if block being removed -->
 			<div data-q-each="clocks">
-				<div class="clock" data-q-component="clock">
-					<canvas width="300" height="300"></canvas>
-					<small><span data-q-value="filled"></span> of <span data-q-value="segments"></span></small>
-					<button class="remove btn btn-outline btn-error btn-circle" data-q-click="remove">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><title>close</title><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
-					</button>
-					<button class="erase btn btn-outline btn-circle" data-q-click="erase">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><title>eraser</title><path d="M16.24,3.56L21.19,8.5C21.97,9.29 21.97,10.55 21.19,11.34L12,20.53C10.44,22.09 7.91,22.09 6.34,20.53L2.81,17C2.03,16.21 2.03,14.95 2.81,14.16L13.41,3.56C14.2,2.78 15.46,2.78 16.24,3.56M4.22,15.58L7.76,19.11C8.54,19.9 9.8,19.9 10.59,19.11L14.12,15.58L9.17,10.63L4.22,15.58Z" /></svg>
-					</button>
-					<figure>
-						<img data-q-src="imagePath" data-q-click="draw" />
-						<figcaption data-q-value="title"></figcaption>
-					</figure>
-				</div>
+				<div data-q-template="clock"></div>
 			</div>
 		</section>
 	</div>
 </main>
+
 <footer class="fixed bottom-0 left-0 right-0 flex justify-center p-2" data-q-component="clock-add">
 	<details class="dropdown dropdown-top">
 		<summary class="btn btn-primary">
@@ -83,6 +70,23 @@
 		</div>
 	</details>
 </footer>
+
+<template id="clock">
+	<div class="clock" data-q-component="clock">
+		<canvas width="300" height="300"></canvas>
+		<small><span data-q-value="filled"></span> of <span data-q-value="segments"></span></small>
+		<button class="remove btn btn-outline btn-error btn-circle" data-q-click="remove">
+			<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><title>close</title><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
+		</button>
+		<button class="erase btn btn-outline btn-circle" data-q-click="erase">
+			<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><title>eraser</title><path d="M16.24,3.56L21.19,8.5C21.97,9.29 21.97,10.55 21.19,11.34L12,20.53C10.44,22.09 7.91,22.09 6.34,20.53L2.81,17C2.03,16.21 2.03,14.95 2.81,14.16L13.41,3.56C14.2,2.78 15.46,2.78 16.24,3.56M4.22,15.58L7.76,19.11C8.54,19.9 9.8,19.9 10.59,19.11L14.12,15.58L9.17,10.63L4.22,15.58Z" /></svg>
+		</button>
+		<figure>
+			<img data-q-src="imagePath" data-q-click="draw" />
+			<figcaption data-q-value="title"></figcaption>
+		</figure>
+	</div>
+</template>
 
 <script type="module" src="/main.js"></script>
 
