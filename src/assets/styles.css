@@ -1988,10 +1988,6 @@ html {
   z-index: 1;
 }
 
-.block {
-  display: block;
-}
-
 .flex {
   display: flex;
 }
