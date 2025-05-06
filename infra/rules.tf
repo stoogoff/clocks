@@ -1,4 +1,4 @@
-/*
+
 resource "bunnynet_pullzone_edgerule" "redirect_pullzone_domain" {
 	enabled     = true
 	pullzone    = bunnynet_pullzone.cdn.id
@@ -7,7 +7,7 @@ resource "bunnynet_pullzone_edgerule" "redirect_pullzone_domain" {
 	actions = [
 		{
 			type       = "Redirect"
-			parameter1 = "https://${bunnynet_pullzone_hostname.reticula.name}"
+			parameter1 = "https://${bunnynet_pullzone_hostname.clocks.name}"
 			parameter2 = "301"
 			parameter3 = null
 		}
@@ -26,4 +26,3 @@ resource "bunnynet_pullzone_edgerule" "redirect_pullzone_domain" {
 		}
 	]
 }
-*/
