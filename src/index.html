@@ -4,26 +4,32 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Clocks</title>
-<link rel="stylesheet" type="text/css" href="/assets/styles.css" />
+<link rel="stylesheet" type="text/css" href="/css/styles.css" />
+<script type="importmap">
+{
+	"imports": {
+		"q/": "https://cdn.we-evolve.co.uk/js/q/v1.1.1/",
+		"clock/": "./js/modules/clock/"
+	}
+}
+</script>
 </head>
 <body>
 
-<div class="navbar bg-base-100 shadow-lg px-4 py-2">
-	<div class="flex-1 uppercase text-lg font-bold">
-		Clocks
+<nav>
+	<div class="logo">
+		<a href="/">Clocks</a>
 	</div>
-	<div class="flex-none">
-		<ul class="menu menu-horizontal px-1">
-			<li><a class="btn btn-ghost" href="/">Home</a></li>
-			<li><a class="btn btn-ghost" href="/about/">About</a></li>
-		</ul>
-	</div>
-</div>
+	<menu>
+		<li><a href="/">Home</a></li>
+		<li><a href="/about/">About</a></li>
+	</menu>
+</nav>
 
 <main data-q-component="clock-manager">
 	<div>
 		<section data-q-if="!hasClocks" class="max-w-screen-md md:mx-auto">
-			<div class="p-4 rounded-md bg-base-100 shadow-lg">
+			<div class="card">
 				<h1>How to use</h1>
 				<p>Use the ADD button at the bottom of the main page to create a clock. You can choose the number of segments, give it a name, and choose a colour. Once the clock is created, clicking anywhere on the clock will fill in a segment of the chosen colour. There’s a close button which deletes the clock, and an eraser button which clears a filled segment.</p>
 			</div>
@@ -36,34 +42,34 @@
 	</div>
 </main>
 
-<footer class="fixed bottom-0 left-0 right-0 flex justify-center p-2" data-q-component="clock-add">
-	<details class="dropdown dropdown-top">
-		<summary class="btn btn-primary">
-			<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><title>clock-outline</title><path d="M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z" /></svg>
+<footer data-q-component="clock-add">
+	<details>
+		<summary class="btn">
+			<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><title>clock-outline</title><path d="M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z" /></svg>
 			Add
 		</summary>
-		<div class="menu dropdown-content bg-base-100 rounded-box z-[1] p-2 shadow">
-			<label class="label">
+		<div class="card">
+			<label>
 				Segments
-				<select placeholder="Select" class="select select-bordered flex-grow" data-q-input="segments">
+				<select placeholder="Select" data-q-input="segments">
 					<option>4</option>
 					<option>6</option>
 					<option>8</option>
 				</select>
 			</label>
-			<label class="label">
+			<label>
 				Name
-				<input type="text" class="input input-bordered" data-q-input="title" />
+				<input type="text" data-q-input="title" />
 			</label>
-			<label class="label">
+			<label>
 				Colour
-				<div class="flex gap-1 justify-center">
+				<div class="colour-picker">
 					<div data-q-each="colours">
-						<div class="badge badge-lg" data-q-colour="colour" data-q-click="setColour"></div>
+						<div class="badge" data-q-colour="colour" data-q-click="setColour"></div>
 					</div>
 				</div>
 			</label>
-			<button data-q-click="save" class="btn btn-primary w-full" data-q-disabled="disabled">
+			<button data-q-click="save" disabled data-q-disabled="disabled">
 				<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><title>plus</title><path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" /></svg>
 				Save
 			</button>
@@ -88,7 +94,7 @@
 	</div>
 </template>
 
-<script type="module" src="/main.js"></script>
+<script type="module" src="/js/main.js"></script>
 
 </body>
 </html>

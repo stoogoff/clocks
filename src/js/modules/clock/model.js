@@ -1,6 +1,6 @@
 
-import { id, createId } from 'quick/utils/string.js'
-import { logger } from './logger.js'
+import { slugify, createId } from 'q/utils/string.js'
+import { logger } from 'clock/logger.js'
 
 export class ClockModel {
 	constructor(segments, title) {
@@ -11,7 +11,7 @@ export class ClockModel {
 		this.filled = 0
 		this.colour = '#444'
 
-		this.id = `clock:${ id(this.title) }:segment-${ this.segments }-${ createId() }`
+		this.id = `clock:${ slugify(this.title) }:segment-${ this.segments }-${ createId() }`
 	}
 
 	toJson() {

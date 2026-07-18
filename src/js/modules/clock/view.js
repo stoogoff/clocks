@@ -1,8 +1,8 @@
 
-import { isNull, isEmptyArray } from 'quick/utils/assert.js'
-import { ClockModel } from './model.js'
-import { clockStore } from './store.js'
-import { logger } from './logger.js'
+import { isNull, isEmptyArray } from 'q/utils/assert.js'
+import { ClockModel } from 'clock/model.js'
+import { clockStore } from 'clock/store.js'
+import { logger } from 'clock/logger.js'
 
 // drawing constants
 const CENTRE = { x: 150, y: 150 }

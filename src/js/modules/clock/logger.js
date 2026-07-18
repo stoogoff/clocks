@@ -1,5 +1,5 @@
 
-import { getLogger, ConsoleLogger } from 'quick/utils/logger.js'
+import { getLogger, ConsoleLogger } from 'q/utils/logger.js'
 
 export const CLOCK_LOG_KEY = 'Clock'
 

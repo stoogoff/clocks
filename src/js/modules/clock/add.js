@@ -1,7 +1,7 @@
 
-import { isEmptyString, isNull } from 'quick/utils/assert.js'
-import { clockStore } from './store.js'
-import { logger } from './logger.js'
+import { isEmptyString, isNull } from 'q/utils/assert.js'
+import { clockStore } from 'clock/store.js'
+import { logger } from 'clock/logger.js'
 
 export default {
 	data: {
