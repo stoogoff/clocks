@@ -116,7 +116,7 @@ footer {
 
 /* forms */
 label {
-	margin-top: var(--spacing-2);
+	margin: var(--spacing-4) 0;
 	text-transform: uppercase;
 	display: flex;
 	gap: var(--spacing-4);
@@ -194,48 +194,57 @@ button, .btn {
 		min-height: 328px;
 		width: 300px;
 	}
-}
 
-.clock figcaption {
-	top: 320px;
-	text-transform: uppercase;
-	font-weight: bold;
-	text-align: center;
-	position: absolute;
-	top: var(--spacing-4);
-	right: var(--spacing-4);
-}
+	figcaption {
+		text-transform: uppercase;
+		font-weight: bold;
+		text-align: center;
+		position: absolute;
+		left: var(--spacing-4);
+		right: var(--spacing-4);
+		bottom: var(--spacing-3);
+	}
 
-.clock canvas {
-	position: absolute;
-	top: var(--spacing-4);
-	right: var(--spacing-4);
-}
+	canvas {
+		position: absolute;
+		top: var(--spacing-4);
+		right: var(--spacing-4);
+	}
 
-.clock small {
-	@apply !absolute top-2 left-2 z-50;
-}
+	small {
+		position: absolute;
+		top: var(--spacing-2);
+		left: var(--spacing-2);
+		z-index: 50;
+	}
 
-.clock svg {
-	@apply h-6 w-6;
-}
+	figure img {
+		position: absolute;
+		top: var(--spacing-4);
+		right: var(--spacing-4);
+	}
 
-.clock figure img {
-	position: absolute;
-	top: var(--spacing-4);
-	right: var(--spacing-4);
-}
+	button.remove, button.erase {
+		border-radius: 100%;
+		background-color: var(--card-bg);
+		color: var(--card-fg);
+		border: 1px solid var(--card-fg);
+		padding: var(--spacing-3);
+	}
 
-.clock button.remove {
-	position: absolute;
-	top: var(--spacing-2);
-	right: var(--spacing-2);
-	z-index: 50;
-}
+	button.remove {
+		position: absolute;
+		top: var(--spacing-2);
+		right: var(--spacing-2);
+		z-index: 50;
+		color: var(--red-600);
+		border: 1px solid var(--red-600);
+	}
 
-.clock button.erase {
-	position: absolute;
-	bottom: var(--spacing-2);
-	right: var(--spacing-2);
-	z-index: 50;
+	button.erase {
+		position: absolute;
+		bottom: var(--spacing-2);
+		right: var(--spacing-2);
+		z-index: 50;
+	}
 }

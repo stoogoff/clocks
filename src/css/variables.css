@@ -40,31 +40,31 @@
 }
 
 :root {
-	--primary-bg: var(--grey-200);
-	--primary-fg: var(--grey-800);
+	--primary-bg: var(--slate-200);
+	--primary-fg: var(--slate-800);
 
-	--card-bg: white;
-	--card-fg: var(--grey-950);
-	--card-border: 1px solid var(--grey-400);
+	--card-bg: var(--slate-50);
+	--card-fg: var(--slate-800);
+	--card-border: 1px solid var(--slate-100);
 
-	--menu-bg: white;
-	--menu-fg: var(--grey-800);
-	--menu-border: 2px solid var(--grey-950);
-	--menu-hover: var(--grey-200);
+	--menu-bg: var(--slate-50);
+	--menu-fg: var(--slate-800);
+	--menu-border: 2px solid var(--slate-950);
+	--menu-hover: var(--slate-200);
 
-	--button-bg: var(--blue-800);
+	--button-bg: var(--blue-600);
 	--button-fg: var(--blue-50);
-	--button-border: 2px solid var(--blue-950);
+	--button-border: 2px solid var(--blue-700);
 
 	--button-hover-bg: var(--blue-700);
 	--button-hover-fg: var(--blue-50);
-	--button-hover-border: 2px solid var(--blue-950);
+	--button-hover-border: 2px solid var(--blue-800);
 
 	--button-disabled-bg: var(--grey-500);
 	--button-disabled-fg: var(--grey-200);
-	--button-disabled-border: 2px solid var(--grey-700);
+	--button-disabled-border: 2px solid var(--grey-500);
 
-	--form-bg: var(--green-700);
-	--form-fg: var(--green-50);
-	--form-border: 2px solid var(--green-950);
+	--form-bg: var(--grey-100);
+	--form-fg: var(--grey-700);
+	--form-border: 2px solid var(--grey-300);
 }

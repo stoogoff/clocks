@@ -19,7 +19,7 @@ export default {
 
 	computed: {
 		imagePath() {
-			return `/assets/img/clock-${ this.data.segments }.png`
+			return `/media/clock-${ this.data.segments }.png`
 		},
 	},
 
@@ -68,11 +68,11 @@ export default {
 
 		this.data.filled++
 
-		clockStore.update(this.data)
+		//clockStore.add(this.data)
 	},
 
 	remove() {
-		clockStore.remove(this.data)
+		//clockStore.remove(this.data)
 	},
 
 	erase() {
@@ -80,7 +80,7 @@ export default {
 
 		this.data.filled--
 
-		clockStore.update(this.data)
+		//clockStore.add(this.data)
 
 		this.clear()
 		this.drawAllSegments()

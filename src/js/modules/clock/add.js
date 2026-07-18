@@ -2,6 +2,7 @@
 import { isEmptyString, isNull } from 'q/utils/assert.js'
 import { clockStore } from 'clock/store.js'
 import { logger } from 'clock/logger.js'
+import { ClockModel } from 'clock/model.js'
 
 export default {
 	data: {
@@ -42,11 +43,11 @@ export default {
 	},
 
 	save() {
-		const clock = {
+		const clock = ClockModel.fromJson({
 			segments: parseInt(this.data.segments),
 			title: this.data.title,
 			colour: this.data.colour ?? '#444',
-		}
+		})
 
 		logger().info('add.save', clock)
 
