@@ -1,13 +1,12 @@
 
-import { setLogger, ConsoleLogger, LOG_LEVEL_LOG, LOG_LEVEL_INFO } from 'q/utils/logger.js'
+import { setLogger, ConsoleLogger, LOG_LEVEL_ERROR } from 'q/utils/logger.js'
 import { directives } from 'q/reactive/directives.js'
 import ClockAdd from 'clock/add.js'
 import ClockManager from 'clock/manager.js'
 import ClockView from 'clock/view.js'
-import { clockStore } from 'clock/store.js'
 import { CLOCK_LOG_KEY } from 'clock/logger.js'
 
-setLogger(CLOCK_LOG_KEY, ConsoleLogger, LOG_LEVEL_INFO)
+setLogger(CLOCK_LOG_KEY, ConsoleLogger, LOG_LEVEL_ERROR)
 
 // register custom component
 directives.register('colour', (context) => {

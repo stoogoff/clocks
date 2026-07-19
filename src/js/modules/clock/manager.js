@@ -5,8 +5,8 @@ import { logger } from 'clock/logger.js'
 
 export default {
 	mounted() {
-		clockStore.on('change:all', () => {
-			logger().info('manager: clockStore.on("change")')
+		clockStore.on('change:all', (_, clocks) => {
+			logger().info('manager: clockStore.on("change:all")', clocks)
 			this.emit('change')
 		})
 	},

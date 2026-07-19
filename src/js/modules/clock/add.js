@@ -2,7 +2,6 @@
 import { isEmptyString, isNull } from 'q/utils/assert.js'
 import { clockStore } from 'clock/store.js'
 import { logger } from 'clock/logger.js'
-import { ClockModel } from 'clock/model.js'
 
 export default {
 	data: {
@@ -42,17 +41,7 @@ export default {
 		logger().log(this.data.colour)
 	},
 
-	save() {
-		const clock = ClockModel.fromJson({
-			segments: parseInt(this.data.segments),
-			title: this.data.title,
-			colour: this.data.colour ?? '#444',
-		})
-
-		logger().info('add.save', clock)
-
-		clockStore.add(clock)
-
+	close() {
 		const details = this.node.getElementsByTagName('details')
 
 		if(details.length > 0) {
@@ -65,5 +54,19 @@ export default {
 
 		this.currentTarget.style.border = ''
 		this.currentTarget = null
+	},
+
+	save() {
+		const clock = {
+			segments: parseInt(this.data.segments),
+			title: this.data.title,
+			colour: this.data.colour ?? '#444',
+		}
+
+		logger().info('add.save', clock)
+
+		clockStore.upsert(clock)
+
+		this.close()
 	},
 }

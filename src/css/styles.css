@@ -4,15 +4,17 @@
 @import url(reset.css);
 
 html, body {
-	font-size: 14px;
+	font-size: var(--text-md);
 	width: 100vw;
 	height: 100vh;
+	margin-bottom: var(--spacing-16);
 }
 
 body {
 	font-family: var(--font-base);
 	color: var(--primary-fg);
 	background-color: var(--primary-bg);
+	padding-bottom: var(--spacing-16);
 }
 
 nav {
@@ -55,8 +57,6 @@ nav {
 
 main {
 	padding: var(--spacing-4);
-	margin: 0 auto var(--spacing-8);
-	max-width: 800px;
 }
 
 h1 {
@@ -85,6 +85,28 @@ p {
 	}
 }
 
+.content {
+	max-width: 900px;
+	margin: auto;
+
+	&.columns {
+		display: flex;
+		gap: var(--spacing-4);
+	}
+}
+
+@media screen and (max-width: 800px) {
+	.content.columns {
+		flex-direction: column;
+	}
+}
+
+.grid-2 {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: var(--spacing-4);
+}
+
 /* footer */
 footer {
 	position: fixed;
@@ -94,6 +116,7 @@ footer {
 	padding: var(--spacing-2);
 	display: flex;
 	justify-content: center;
+	z-index: 100;
 
 	details {
 		position: relative;
@@ -103,12 +126,17 @@ footer {
 			list-style-type: none;
 		}
 
-		.card {
+		.expander {
 			position: fixed;
 			top: auto;
 			left: var(--spacing-8);
 			bottom: var(--spacing-16);
-			right: var(--spacing-8);
+			right: var(--spacing-8);		
+		}
+
+		.card {
+			max-width: 800px;
+			margin: auto;
 		}
 	}
 }
@@ -134,10 +162,9 @@ input, select {
 
 button, .btn {
 	text-transform: uppercase;
+	font-size: var(--text-md);
+	line-height: var(--text-md);
 	padding: var(--spacing-2) var(--spacing-4);
-	background-color: var(--button-bg);
-	color: var(--button-fg);
-	border: var(--button-border);
 	border-radius: var(--spacing-2);
 	cursor: pointer;
 	display: flex;
@@ -146,16 +173,32 @@ button, .btn {
 	justify-content: center;
 
 	&[disabled], &[disabled]:hover {
-		background-color: var(--button-disabled-bg);
-		color: var(--button-disabled-fg);
-		border: var(--button-disabled-border);
+		background-color: var(--button-disabled-bg) !important;
+		color: var(--button-disabled-fg) !important;
+		border: var(--button-disabled-border) !important;
 		cursor: not-allowed;
 	}
 
-	&:hover {
-		background-color: var(--button-hover-bg);
-		color: var(--button-hover-fg);
-		border: var(--button-hover-border);
+	&.btn-primary {
+		background-color: var(--button-bg);
+		color: var(--button-fg);
+		border: var(--button-border);
+
+		&:hover {
+			background-color: var(--button-hover-bg);
+			color: var(--button-hover-fg);
+			border: var(--button-hover-border);
+		}
+	}
+
+	&.btn-secondary {
+		background-color: var(--orange-200);
+		color: var(--orange-800);
+		border: 2px solid var(--orange-300);
+
+		&:hover {
+			background-color: var(--orange-300);
+		}
 	}
 
 	svg {
@@ -176,6 +219,13 @@ button, .btn {
 		height: var(--spacing-6);
 		border-radius: 100%;
 	}
+}
+
+/* clocks */
+.clocks {
+	display: flex;
+	gap: var(--spacing-4);
+	flex-wrap: wrap;
 }
 
 /* clock */

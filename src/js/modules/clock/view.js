@@ -1,6 +1,5 @@
 
 import { isNull, isEmptyArray } from 'q/utils/assert.js'
-import { ClockModel } from 'clock/model.js'
 import { clockStore } from 'clock/store.js'
 import { logger } from 'clock/logger.js'
 
@@ -67,20 +66,18 @@ export default {
 		this.render(this.data.filled)
 
 		this.data.filled++
-
-		//clockStore.add(this.data)
+		clockStore.upsert(this.data)
 	},
 
 	remove() {
-		//clockStore.remove(this.data)
+		clockStore.remove(this.data)
 	},
 
 	erase() {
 		if(this.data.filled <= 0) return
 
 		this.data.filled--
-
-		//clockStore.add(this.data)
+		clockStore.upsert(this.data)
 
 		this.clear()
 		this.drawAllSegments()
