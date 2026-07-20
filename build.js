@@ -17,6 +17,8 @@ const create = async dir => await Deno.mkdir(dir, { recursive: true })
 
 // recursively copy non-html files
 const copy = async (source, target) => {
+	await create(target)
+
 	for await (const file of Deno.readDir(source)) {
 		if(file.isFile && !file.name.endsWith('.html')) {
 			await Deno.copyFile(join(source, file.name), join(target, file.name))
@@ -34,10 +36,10 @@ const versionHtml = async (source, target, version) => {
 		if(file.isFile && file.name.endsWith('.html')) {
 			const text = await Deno.readTextFile(join(source, file.name))
 			const converted = text
-				.replace(/href="\/css/g, `href="${version}/css`)
+				.replace(/href="\/css/g, `href="/${version}/css`)
 				.replace(/"\.\/js/g, `"./${version}/js`)
-				.replace(/"\/js/g, `"./${version}/js`)
-				.replace(/src="\/media/g, `src="${version}/media`)
+				.replace(/"\.\.\/js/g, `"../${version}/js`)
+				.replace(/"\/js/g, `"/${version}/js`)
 
 			await Deno.writeTextFile(join(target, file.name), converted)
 		}
@@ -61,10 +63,18 @@ const distVersioned = join(dist, version)
 await clean(dist)
 await create(distVersioned)
 
-// copy media files
-await copy(source, distVersioned)
+// copy media files, dir by dir
+const mediaDirs = ['css', 'js']
+
+await Promise.all(mediaDirs.map(dir => copy(join(source, dir), join(distVersioned, dir))))
+
+// copy images to dist
+await copy(join(source, 'media'), join(dist, 'media'))
 
 // copy and update HTML
 await versionHtml(source, dist, version)
+
+await create(join(dist, 'about'))
+await versionHtml(join(source, 'about'), join(dist, 'about'), version)
 
 console.log('Done')
