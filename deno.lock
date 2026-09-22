@@ -23,16 +23,6 @@
     "dependencies": [
       "jsr:@std/dotenv@0.225",
       "jsr:@std/path@^1.1.0"
-    ],
-    "packageJson": {
-      "dependencies": [
-        "npm:autoprefixer@^10.4.20",
-        "npm:daisyui@^4.12.23",
-        "npm:events@^3.3.0",
-        "npm:postcss@^8.4.49",
-        "npm:tailwindcss@^3.4.17",
-        "npm:vite@^6.0.4"
-      ]
-    }
+    ]
   }
 }
