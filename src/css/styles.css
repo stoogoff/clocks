@@ -4,17 +4,21 @@
 @import url(reset.css);
 
 html, body {
-	font-size: var(--text-md);
 	width: 100vw;
-	height: 100vh;
-	margin-bottom: var(--spacing-16);
+	height: 100svh;
+}
+
+html {
+	overflow: hidden;
 }
 
 body {
+	font-size: var(--text-md);
 	font-family: var(--font-base);
 	color: var(--primary-fg);
 	background-color: var(--primary-bg);
 	padding-bottom: var(--spacing-16);
+	overflow-y: scroll;
 }
 
 nav {

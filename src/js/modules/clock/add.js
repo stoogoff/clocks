@@ -1,9 +1,11 @@
 
-import { isEmptyString, isNull } from 'q/utils/assert.js'
+import { isEmptyString, isNull, notNull } from 'q/utils/assert.js'
 import { clockStore } from 'clock/store.js'
 import { logger } from 'clock/logger.js'
 
 export default {
+	currentTarget: null,
+
 	data: {
 		title: '',
 		segments: null,
@@ -52,8 +54,10 @@ export default {
 		this.data.segments = null
 		this.data.colour = null
 
-		this.currentTarget.style.border = ''
-		this.currentTarget = null
+		if(notNull(this.currentTarget)) {
+			this.currentTarget.style.border = ''
+			this.currentTarget = null
+		}
 	},
 
 	save() {
