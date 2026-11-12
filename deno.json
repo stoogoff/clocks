@@ -4,11 +4,14 @@
 		"serve": "cd dist; python3 -m http.server 8001",
 		"build": "deno --allow-read --allow-write --allow-env ci/build.js",
 		"deploy": "deno --allow-read --allow-net --allow-env ci/deploy.js",
-		"purge": "deno --allow-read --allow-net --allow-env ci/purge.js"
+		"purge": "deno --allow-read --allow-net --allow-env ci/purge.js",
+		"imports": "deno --allow-read --allow-run ci/imports.js"
 	},
 	"imports": {
 		"@std/dotenv": "jsr:@std/dotenv@^0.225.0",
-		"@std/path": "jsr:@std/path@^1.1.0"
+		"@std/path": "jsr:@std/path@^1.1.0",
+		"q/": "https://cdn.we-evolve.co.uk/js/q/v1.1.1/",
+		"clock/": "./src/js/modules/clock/"
 	},
 	"lint": {
 		"include": ["src/"],

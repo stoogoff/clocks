@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<link rel="manifest" href="manifest.json" />
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Clocks</title>
@@ -18,6 +19,34 @@
 <meta property="og:url" content="https://clocks.we-evolve.co.uk/" />
 <meta property="og:title" content="Clocks" />
 <meta property="og:description" content="Clocks, for tracking progression in tabletop roleplaying games, such as Apocalypse World or Blades in the Dark." />
+<link rel="modulepreload" href="./js/register.js" />
+<link rel="modulepreload" href="./js/main.js" />
+<link rel="modulepreload" href="./js/modules/clock/add.js" />
+<link rel="modulepreload" href="./js/modules/clock/logger.js" />
+<link rel="modulepreload" href="./js/modules/clock/manager.js" />
+<link rel="modulepreload" href="./js/modules/clock/model.js" />
+<link rel="modulepreload" href="./js/modules/clock/store.js" />
+<link rel="modulepreload" href="./js/modules/clock/view.js" />
+<link rel="modulepreload" href="https://cdn.we-evolve.co.uk/js/q/v1.1.1/reactive/component.js" />
+<link rel="modulepreload" href="https://cdn.we-evolve.co.uk/js/q/v1.1.1/reactive/config.js" />
+<link rel="modulepreload" href="https://cdn.we-evolve.co.uk/js/q/v1.1.1/reactive/context.js" />
+<link rel="modulepreload" href="https://cdn.we-evolve.co.uk/js/q/v1.1.1/reactive/directives.js" />
+<link rel="modulepreload" href="https://cdn.we-evolve.co.uk/js/q/v1.1.1/reactive/directives/attribute.js" />
+<link rel="modulepreload" href="https://cdn.we-evolve.co.uk/js/q/v1.1.1/reactive/directives/boolean.js" />
+<link rel="modulepreload" href="https://cdn.we-evolve.co.uk/js/q/v1.1.1/reactive/directives/component.js" />
+<link rel="modulepreload" href="https://cdn.we-evolve.co.uk/js/q/v1.1.1/reactive/directives/each.js" />
+<link rel="modulepreload" href="https://cdn.we-evolve.co.uk/js/q/v1.1.1/reactive/directives/event.js" />
+<link rel="modulepreload" href="https://cdn.we-evolve.co.uk/js/q/v1.1.1/reactive/directives/include.js" />
+<link rel="modulepreload" href="https://cdn.we-evolve.co.uk/js/q/v1.1.1/reactive/directives/index.js" />
+<link rel="modulepreload" href="https://cdn.we-evolve.co.uk/js/q/v1.1.1/reactive/directives/input.js" />
+<link rel="modulepreload" href="https://cdn.we-evolve.co.uk/js/q/v1.1.1/reactive/directives/store.js" />
+<link rel="modulepreload" href="https://cdn.we-evolve.co.uk/js/q/v1.1.1/reactive/directives/template.js" />
+<link rel="modulepreload" href="https://cdn.we-evolve.co.uk/js/q/v1.1.1/reactive/directives/text.js" />
+<link rel="modulepreload" href="https://cdn.we-evolve.co.uk/js/q/v1.1.1/utils/assert.js" />
+<link rel="modulepreload" href="https://cdn.we-evolve.co.uk/js/q/v1.1.1/utils/emitter.js" />
+<link rel="modulepreload" href="https://cdn.we-evolve.co.uk/js/q/v1.1.1/utils/logger.js" />
+<link rel="modulepreload" href="https://cdn.we-evolve.co.uk/js/q/v1.1.1/utils/storage.js" />
+<link rel="modulepreload" href="https://cdn.we-evolve.co.uk/js/q/v1.1.1/utils/string.js" />
 </head>
 <body>
 
@@ -104,6 +133,7 @@
 	</div>
 </template>
 
+<script type="module" src="/js/register.js"></script>
 <script type="module" src="/js/main.js"></script>
 
 </body>
