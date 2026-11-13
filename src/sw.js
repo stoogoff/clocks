@@ -10,6 +10,8 @@ const PRECACHE = [
 	'/media/clock-4.png',
 	'/media/clock-6.png',
 	'/media/clock-8.png',
+	'/media/logo-192.png',
+	'/media/logo-512.png',
 	'/media/we-evolve.png',
 	// START block which gets path rewritten to add version
 	'/css/colours.css',
